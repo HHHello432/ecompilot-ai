@@ -1,0 +1,17 @@
+# 隐私配置（含凭据），不入库
+config.json
+cookies.json
+
+# 输出产物（结果 JSON、旧数据备份、探测文件、skill 分发包等）
+output/
+
+# 探测/临时文件
+probe*.py
+js_cache/
+page.html
+entry-index.js
+chunk_list.txt
+version_config.js
+feishu_meta.json
+concurrent_debug.jsonl
+__pycache__/

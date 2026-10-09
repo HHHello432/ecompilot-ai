@@ -11,3 +11,10 @@ backend/storage/
 新建 文本文档.txt
 node_modules/
 dist/
+
+# 集成的 RPA 控制台：运行时配置与产物（含内网主机名 / 会话），不入库
+integrations/octopus-rpa-console-dashboard/config.json
+integrations/octopus-rpa-console-dashboard/robot_logs.json
+integrations/octopus-rpa-console-dashboard/output/
+integrations/octopus-rpa-console-dashboard/.shots/
+integrations/octopus-rpa-console-dashboard/console.log

@@ -1,0 +1,95 @@
+# ============================================================
+# daily_product_updater - Git 忽略规则
+# ============================================================
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ---------- 虚拟环境 ----------
+venv/
+ENV/
+env/
+.venv/
+
+# ---------- IDE ----------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# ---------- 环境配置 / 敏感信息 ----------
+.env
+.env.local
+.env.*.local
+config.local.py
+credentials*.json
+secrets.yaml
+config.json
+
+# ---------- 日志 & 临时文件 ----------
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+*.bak
+*.orig
+
+# ---------- 操作系统 ----------
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.lnk
+
+# ---------- Selenium / 浏览器 ----------
+geckodriver_log*
+chromedriver.log
+
+# ---------- 数据文件（按需取消注释）----------
+# *.xlsx
+# *.csv
+# *.xls
+
+# ---------- Jupyter Notebook ----------
+.ipynb_checkpoints/
+
+# ---------- pytest / 测试覆盖 ----------
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# ---------- 包管理 ----------
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+/*.xlsx
+/网页请求示例.txt

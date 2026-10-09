@@ -1,0 +1,9 @@
+{
+  "COOKIES": [
+    { "Name": "PHPSESSID", "Value": "your_phpsessid" },
+    { "Name": "XSRF-TOKEN", "Value": "your_xsrf_token" },
+    { "Name": "其余领星 ads 后台 cookie 逐条照此填写", "Value": "..." }
+  ],
+  "CSRF_TOKEN": null,
+  "COMPANY_ID": "YOUR_COMPANY_ID"
+}

@@ -1,0 +1,45 @@
+{
+  "APP_ID": "cli_xxxxxxxxxxxxxxxx",
+  "APP_SECRET": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "COOKIES": [
+    {
+      "Name": "auth-token",
+      "Value": "..."
+    },
+    {
+      "Name": "company_id",
+      "Value": "..."
+    },
+    {
+      "Name": "env_key",
+      "Value": "..."
+    },
+    {
+      "Name": "uid",
+      "Value": "..."
+    },
+    {
+      "Name": "zid",
+      "Value": "..."
+    }
+  ],
+  "SHIPMENT": {
+    "START_DATE": "auto",
+    "END_DATE": "auto",
+    "FEISHU_URL": ""
+  },
+  "RECEIVABLE": {
+    "SETTLE_MONTH": "auto",
+    "SIDS": [],
+    "FEISHU_URL": "",
+    "EXCLUDE_SELLERS": [
+      "某店铺"
+    ]
+  },
+  "FBA": {
+    "FEISHU_URL": ""
+  },
+  "STOCK": {
+    "FEISHU_URL": ""
+  }
+}

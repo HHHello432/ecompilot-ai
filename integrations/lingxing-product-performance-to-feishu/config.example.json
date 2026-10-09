@@ -1,0 +1,16 @@
+{
+  "lingxing": {
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "cookie": "auth-token=xxx; company_id=xxx; env_key=xxx; uid=xxx; zid=xxx"
+  },
+  "feishu": {
+    "app_id": "cli_xxxxxxxxxxxxxxxx",
+    "app_secret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "spreadsheet_token": "xxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "persons": {
+    "洪": "洪键垌",
+    "张": "张坚富"
+  },
+  "principal_uids": [10841059, 11086010]
+}

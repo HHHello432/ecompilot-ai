@@ -29,6 +29,7 @@ import {
   RefreshCw,
   RotateCcw,
   Sparkles,
+  SquareTerminal,
   TrendingUp,
   UploadCloud,
   WalletCards,
@@ -97,6 +98,7 @@ function App() {
   const [history, setHistory] = useState([]);
   const [completedTasks, setCompletedTasks] = useState({});
   const [platforms, setPlatforms] = useState([]);
+  const [consoleInfo, setConsoleInfo] = useState(null);
 
   useEffect(() => {
     if (!answer) {
@@ -120,6 +122,7 @@ function App() {
   useEffect(() => {
     loadDemo();
     refreshPlatforms();
+    refreshConsole();
   }, []);
 
   useEffect(() => {
@@ -252,6 +255,30 @@ function App() {
     }
   }
 
+  async function refreshConsole() {
+    try {
+      const result = await request("/api/console/status");
+      setConsoleInfo(result);
+    } catch {
+      setConsoleInfo(null);
+    }
+  }
+
+  async function openConsole() {
+    try {
+      const result = await request("/api/console/start", { method: "POST" });
+      setConsoleInfo(result);
+      if (result.running) {
+        window.open(`${API_BASE}/console/`, "_blank", "noopener,noreferrer");
+        messageApi.success("RPA 控制台已在新标签页打开");
+      } else {
+        messageApi.error(result.error || "控制台子服务启动失败");
+      }
+    } catch (error) {
+      messageApi.error(error.message);
+    }
+  }
+
   function toggleTask(taskKey) {
     if (!taskKey) return;
     const next = { ...completedTasks, [taskKey]: !completedTasks[taskKey] };
@@ -331,6 +358,7 @@ function App() {
             </div>
             <FieldGuide />
             <PlatformConnections platforms={platforms} onAuthorize={startPlatformAuth} onSync={syncPlatform} />
+            <ConsoleEntry info={consoleInfo} onOpen={openConsole} />
           </div>
 
           <nav className="side-nav">
@@ -496,6 +524,38 @@ function PlatformConnections({ platforms, onAuthorize, onSync }) {
           type="text"
         >
           同步
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function ConsoleEntry({ info, onOpen }) {
+  if (!info || !info.available) return null;
+  const statusText = !info.enabled
+    ? "已禁用（ECOMPILOT_ENABLE_CONSOLE=0）"
+    : info.running
+      ? `运行中 · 端口 ${info.port}`
+      : "未启动，点击后自动拉起";
+  return (
+    <div className="platform-box console-box">
+      <div className="platform-head">
+        <span>
+          <SquareTerminal size={15} />
+          <strong>RPA 控制台</strong>
+        </span>
+        <em>{info.enabled ? "内置" : "关闭"}</em>
+      </div>
+      <p>{statusText}</p>
+      <div className="platform-actions">
+        <Button
+          disabled={!info.enabled}
+          icon={<SquareTerminal size={13} />}
+          onClick={onOpen}
+          size="small"
+          type="text"
+        >
+          打开控制台
         </Button>
       </div>
     </div>

@@ -15,6 +15,8 @@ EcomPilot AI 是一个面向中小电商商家的智能运营诊断系统。它�
 - 风险商品处理台：按商品给出风险原因、处理动作、优先级和预计影响
 - 行动清单可导出 CSV，任务状态会按分析记录保存到后端并保留本地兜底
 - 预留抖店、拼多多、淘宝 / 天猫、京东连接器状态接口；默认关闭，不影响本地演示和文件上传模式
+- **领星 ERP 数据源**：Cookie 会话接入，一键拉取产品表现 / 库存 / 发货 / 采购 / 应收并直接生成诊断（见 `docs/领星ERP数据源接入.md`）
+- **RPA 控制台集成**：内置八爪鱼 RPA 控制台，作为托管子服务经 `/console/*` 反向代理提供完整 Web UI
 - Docker / Docker Compose / GitHub Actions / pytest 基础测试
 
 ## 快速开始
@@ -99,6 +101,34 @@ GET  /api/platforms/{platform_id}/callback    接收平台 code 回调并换取 
 POST /api/platforms/{platform_id}/sync        创建同步任务
 ```
 
+### 领星 ERP 数据源
+
+领星走的是 **Cookie 会话**（不是 OAuth），在 `registry.py` 中以 `auth_mode="cookie"` 注册。
+配置 `LINGXING_COOKIE` 后即可一键拉数并直接出诊断：
+
+```text
+POST /api/platforms/lingxing/pull?start_date=2026-09-01&end_date=2026-09-07
+```
+
+详见 [`docs/领星ERP数据源接入.md`](docs/领星ERP数据源接入.md)。
+
+## RPA 控制台
+
+仓库内置八爪鱼 RPA 控制台（`integrations/octopus-rpa-console-dashboard`）。它自带纯标准库 HTTP 服务与完整前端，
+EcomPilot 启动时会把它作为**托管子服务**拉起，并通过 `/console/*` 反向代理暴露，因此只需启动一个进程：
+
+```text
+浏览器打开  http://127.0.0.1:8000/console/      # 完整控制台 UI
+工作台侧栏「RPA 控制台」卡片 → 打开控制台
+GET  /api/console/status                        # 子服务状态
+POST /api/console/start | /api/console/stop     # 手动启停
+```
+
+关闭方式：`ECOMPILOT_ENABLE_CONSOLE=0`（关闭后相关接口返回 503）。
+端口可配：`ECOMPILOT_CONSOLE_PORT`（默认 8010）。
+
+集成细节见 [`docs/集成模块说明.md`](docs/集成模块说明.md)。
+
 ## 使用 Docker
 
 ```bash
@@ -172,8 +202,14 @@ frontend/
 sample_data/
   ecommerce_demo.csv  演示数据
   ecommerce_template.csv 数据上传模板
+integrations/         集成工具（已脱敏）
+  octopus-rpa-console-dashboard/  八爪鱼 RPA 控制台（托管子服务）
+  lingxing-*/                     领星 ERP 数据拉取脚本（接口依据留存）
+  teleagent-*/                    企业微信会话工具（未接入）
 docs/
   技术设计文档.md
   接口文档.md
   项目说明书.md
+  领星ERP数据源接入.md
+  集成模块说明.md
 ```

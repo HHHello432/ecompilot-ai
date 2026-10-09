@@ -1,0 +1,28 @@
+# ---- 隐私配置（绝不入库）----
+config.json
+cookies.json
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+
+# ---- 运行输出 ----
+*_result.json
+unstocked_orders.json
+concurrent_debug.jsonl
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

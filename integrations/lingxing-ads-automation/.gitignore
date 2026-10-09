@@ -1,0 +1,6 @@
+/finished
+/.idea
+/waiting
+/__pycache__
+config.json
+processed_ids.txt

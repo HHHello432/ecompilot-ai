@@ -1,0 +1,20 @@
+{
+  "APP_ID": "cli_xxxxxxxxxxxxxxxx",
+  "APP_SECRET": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "FEISHU_URL": "https://xxx.feishu.cn/base/xxxxxxxxxxxxxxxxxxxxxx",
+  "TABLE1_ID": "tblXXXXXXXXXXXXXXXX",
+  "TABLE2_ID": "tblXXXXXXXXXXXXXXXX",
+  "TABLE1_NAME": "采购单",
+  "TABLE2_NAME": "采购单SKU明细",
+  "VIEW_NAME": "未入库单",
+  "START_DATE": "2026-08-01",
+  "END_DATE": "2026-08-28",
+  "A2_TIME_FIELD": "create_time",
+  "CLEANUP_FINISHED": true,
+  "CLEANUP_THRESHOLD": 15000,
+  "DEBUG_CONCURRENT": false,
+  "DEBUG_FILE": "concurrent_debug.jsonl",
+  "COOKIES": [],
+  "COOKIES_PATH": "cookies.json",
+  "OUTPUT_FILE": "purchase_tracking_result.json"
+}
