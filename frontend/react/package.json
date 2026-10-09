@@ -1,0 +1,21 @@
+{
+  "name": "ecompilot-ai-workbench",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "antd": "^6.1.0",
+    "vite": "^7.2.6",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "recharts": "^3.5.1",
+    "lucide-react": "^0.561.0"
+  },
+  "devDependencies": {}
+}
